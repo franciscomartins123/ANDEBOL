@@ -15,6 +15,7 @@ header {
     background-color: rgb(0, 176, 230);
     padding: 1rem;
     box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
+    z-index: 100;
 }
 
 #Logo {
@@ -37,7 +38,7 @@ header {
     text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1);
 }
 
-main {
+.backgroud {
     background-image: url("../images/mathias-gidsel-denmark.webp");
     width: 100%;
     height: 83vh;
@@ -45,27 +46,22 @@ main {
     background-position: top;
 }
 
-main h1,
-main h2 {
+.backgroud.regras {
+    height: fit-content;
+    padding: 2rem;
+}
+
+main>h1,
+main>h2 {
     color: white;
     position: relative;
     top: 5rem;
     left: 5rem;
     width: 450px;
+    text-shadow: 5px 5px 5px rgba(119, 119, 119, 0.5);
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f2f2f2;
-    padding: 40px;
-}
-
+/* Cards */
 .card-container {
     display: flex;
     flex-wrap: wrap;
@@ -78,7 +74,7 @@ body {
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     overflow: hidden;
-    max-width: 300px;
+    max-width: 400px;
     transition: transform 0.2s ease;
 }
 
@@ -88,7 +84,7 @@ body {
 
 .card img {
     width: 100%;
-    height: auto;
+    height: cover;
 }
 
 .card h2 {
@@ -112,4 +108,77 @@ body {
 
 .card a:hover {
     text-decoration: underline;
+}
+
+/* Carousel */
+
+.carousel {
+    width: 600px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 100px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.slides {
+    display: flex;
+    width: 100%;
+    transition: transform 0.5s ease;
+}
+
+.slide {
+    width: 100%;
+    flex-shrink: 0;
+}
+
+.slide img {
+    width: 100%;
+    display: block;
+}
+
+input[type="radio"] {
+    display: none;
+}
+
+/* Navegação dos slides */
+.navigation {
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+}
+
+.navigation label {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: #ddd;
+    cursor: pointer;
+    transition: all 0.3s ease-out;
+}
+
+.navigation label:hover {
+    background: #999;
+}
+
+/* Lógica dos slides com CSS puro */
+#slide1:checked~.slides {
+    transform: translateX(0%);
+}
+
+#slide2:checked~.slides {
+    transform: translateX(-100%);
+}
+
+#slide3:checked~.slides {
+    transform: translateX(-200%);
+}
+
+/* Destaque do botão ativo */
+#slide1:checked~.navigation label[for="slide1"],
+#slide2:checked~.navigation label[for="slide2"],
+#slide3:checked~.navigation label[for="slide3"] {
+    background: #333;
 }
