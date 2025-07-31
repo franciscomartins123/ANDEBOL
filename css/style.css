@@ -176,9 +176,17 @@ input[type="radio"] {
     transform: translateX(-200%);
 }
 
+#slide4:checked~.slides {
+    transform: translateX(-300%);
+}
+
+#slide5:checked~.slides {
+    transform: translateX(-400%);
+}
+
 /* Destaque do botão ativo */
 #slide1:checked~.navigation label[for="slide1"],
 #slide2:checked~.navigation label[for="slide2"],
-#slide3:checked~.navigation label[for="slide3"] {
+#slide3:checked~.navigation label[for="slide3"] #slide4:checked~.navigation label[for="slide4"] #slide4:checked~.navigation label[for="slide5"] {
     background: #333;
 }
